@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadpool x Wolverine</title>
+    <link rel="icon" href="./imagens/Deadpool-Pendant-icon.png" type="image/png">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="container">
+
+
+        <header>
+            <div class="footer">
+                <span>&copy; 2026 - YAN</span>
+                <div class="footer-icons">
+                    <a href="https://www.linkedin.com/in/yan-caio-9670a8219/" title="Ir para o LinkedIn"
+                        target="_blank"><img width="30px" src="./imagens/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/yan-dmc" title="Ir para o GitHub" target="_blank"><img width="30px"
+                            src="./imagens/github.png" alt="github"></a>
+                    <a href="https://www.instagram.com/_yan.dev/" title="Ir para o Instagram" target="_blank"><img
+                            width="30px" src="./imagens/instagram.png" alt="instagram"></a>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a onclick="navegarAba('inicio')" href="#">Inicio</a></li>
+                    <li><a onclick="navegarAba('sobre')" href="#">Sobre</a></li>
+                    <li><a onclick="navegarAba('trailer')" href="#">Trailer</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="escolha-tema">
+                <figure class="vs"><img src="./imagens/vs.png" alt="vs"></figure>
+                <h2>Escolha seu lado</h2>
+                <div id="escolha">
+                    <figure><img class="selector" onclick="escolherTema('esquerdo')" src="./imagens/wolverine.png"
+                            alt="wolverine" id="wolverine"></figure>
+                    <figure><img class="selector" onclick="escolherTema('direito')" src="./imagens/deadpool.png"
+                            alt="deadpool" id="deadpool"></figure>
+                </div>
+            </section>
+            <section id="wolverine-tema" class="hidden">
+                <div class="wolverine-tema-div1">
+                    <div class="music-info">
+                        <h3>Like a Prayer</h3>
+                        <p>canção de Madonna</p>
+                    </div>
+                    <audio id="tema-audio" controls>
+                        <source src="./musicas/wolverine-theme.mp3" type="audio/mpeg">
+                    </audio>
+                    <h1>Wolverine</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non inventore ipsa fugit, tempore cum
+                        corporis dolores libero veritatis in sed doloribus eos numquam, architecto enim repellat, alias
+                        error ad voluptatum.</p>
+                    <ul>
+                        <li><video height="100%" loop autoplay muted>
+                                <source src="./imagens/0117(5)-1.mp4" type="video/mp4">
+                            </video></li>
+                        <li><video height="100%" loop autoplay muted>
+                                <source src="./imagens/0117(6)-1.mp4" type="video/mp4">
+                            </video></li>
+                        <li><video height="100%" loop autoplay muted>
+                                <source src="./imagens/0117(7)-1.mp4" type="video/mp4">
+                            </video></li>
+                    </ul>
+                </div>
+                <div>
+                    <figure class="wolverine-2"><img width="75%" src="./imagens/wolverine-2.png" alt="wolverine">
+                    </figure>
+                </div>
+            </section>
+            <section id="deadpool-tema" class="hidden">
+                <div>
+                    <figure class="deadpool-2"><img width="80%" src="./imagens/deadpool-2.png" alt="deadpool"></figure>
+                </div>
+                <div>
+                    <div class="music-info">
+                        <h3>Bye Bye Bye</h3>
+                        <p>canção de *NSYNC</p>
+                    </div>
+                    <audio id="tema-audio-deadpool" controls>
+                        <source src="./musicas/deadpool-theme.mp3" type="audio/mpeg">
+                    </audio>
+                    <h1>Deadpool</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non inventore ipsa fugit, tempore cum
+                        corporis dolores libero veritatis in sed doloribus eos numquam, architecto enim repellat, alias
+                        error ad voluptatum.</p>
+                    <ul class="deadpool-videos">
+                        <li><video height="100%" loop autoplay muted>
+                                <source src="./imagens/0117(2)-1.mp4" type="video/mp4">
+                            </video></li>
+                        <li><video height="100%" loop autoplay muted>
+                                <source src="./imagens/0117(3)-1.mp4" type="video/mp4">
+                            </video></li>
+                        <li><video height="100%" loop autoplay muted>
+                                <source src="./imagens/0117(4)-1.mp4" type="video/mp4">
+                            </video></li>
+                    </ul>
+                </div>
+            </section>
+            <section id="sobre-tema" class="hidden">
+                <h2>Elenco</h2>
+                <div class="banner">
+                    <div class="slider">
+                        <div class="projetosItem" style="--position: 1">
+                            <div class="profile johnny"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Tocha Humana</h2>
+                                    <span class="actor-name">interpretado por Chris Evans</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 2">
+                            <div class="profile pyro"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Pyro</h2>
+                                    <span class="actor-name">interpretado por Aaron Stanford</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 3">
+                            <div class="profile emma"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Cassandra Nova</h2>
+                                    <span class="actor-name">interpretado por Emma Corrin</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 4">
+                            <div class="profile matthew"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Paradox</h2>
+                                    <span class="actor-name">interpretado por Matthew Macfadyen</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 5">
+                            <div class="profile leslie"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Al cega</h2>
+                                    <span class="actor-name">interpretado por Leslie Uggams</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 6">
+                            <div class="profile vanessa"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Vanessa</h2>
+                                    <span class="actor-name">interpretado por Morena Baccarin</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 7">
+                            <div class="profile ryan"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Deadpool</h2>
+                                    <span class="actor-name">interpretado por Ryan Reynolds</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 8">
+                            <div class="profile hugh"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Wolverine</h2>
+                                    <span class="actor-name">interpretado por Hugh Jackman</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 9">
+                            <div class="profile dafne"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>X-23</h2>
+                                    <span class="actor-name">interpretado por Dafne Keen</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 10">
+                            <div class="profile channing"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Gambit</h2>
+                                    <span class="actor-name">interpretado por Channing Tatum</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 11">
+                            <div class="profile blade"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Blade</h2>
+                                    <span class="actor-name">interpretado por Wesley Snipes</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 12">
+                            <div class="profile elektra"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Elektra</h2>
+                                    <span class="actor-name">interpretado por Jennifer Garner</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+                        <div class="projetosItem" style="--position: 13">
+                            <div class="profile sabretooth"></div>
+                            <div class="profile-text">
+                                <div>
+                                    <h2>Dente de Sabre</h2>
+                                    <span class="actor-name">interpretado por Tyler Mane</span>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aperiam dignissimos
+                                    corporis.</p>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="buttons">
+                            <button id="prev">&lt;</button>
+                            <button id="next">&gt;</button>
+                        </div>
+                </div>
+                <img src="./imagens/dogpool.png" alt="Dogpool" class="dogpool-image">
+            </section>
+            <section id="trailer-tema" class="hidden">
+                <div class="trailer-carousel" aria-label="Carrossel de trailers">
+                    <button class="carousel-btn prev" id="trailer-prev" aria-label="Trailer anterior">&lt;</button>
+                    <div class="trailer-track">
+                        <div class="trailer-item" data-index="0">
+                            <iframe src="https://www.youtube.com/embed/JjnzxHdZtYY?si=O20NDL3PYDSG_7VX"
+                                title="Trailer 1" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                        <div class="trailer-item" data-index="1">
+                            <iframe src="https://www.youtube.com/embed/dEbe0rS4Z2A?si=dtgJXh9l9nRkUY3w"
+                                title="Trailer 2" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="trailer-item" data-index="2">
+                            <iframe src="https://www.youtube.com/embed/K6lJSJXSdfI?si=3mjQsRF0IxQg1Hz4"
+                                title="Trailer 3" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="trailer-next" aria-label="Próximo trailer">&gt;</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

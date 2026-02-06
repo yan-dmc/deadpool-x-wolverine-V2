@@ -1,0 +1,1211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+a {
+    color: inherit;
+}
+
+:root {
+    --cor-primaria: #101A24;
+    --cor-secundaria: #f3e8ff;
+    --bg-primeira-cor: 50%;
+    --bg-segunda-cor: 50%;
+}
+
+/* Import local font from ./fontes */
+@font-face {
+    font-family: 'DeadpoolOutline';
+    src: url('./fontes/DeadpoolMovie-9AzL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Tema esquerdo */
+.tema-esquerdo {
+    --cor-primaria: #E6B416;
+    --cor-secundaria: #725e26;
+    --bg-primeira-cor: 0%;
+    --bg-segunda-cor: 0%;
+
+}
+
+/* Tema direito */
+.tema-direito {
+    --cor-primaria: #A01E29;
+    --cor-secundaria: #570c16;
+    --bg-primeira-cor: 100%;
+    --bg-segunda-cor: 0%;
+}
+
+body {
+    background-color: var(--cor-primaria);
+    transition: background-color 500ms ease;
+
+}
+
+#container {
+    border: 15px solid var(--cor-primaria);
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+    transition: border 500ms ease;
+    overflow: hidden;
+    height: 100vh;
+    box-shadow: rgb(30, 3, 3) 0px 0px 200px 50px inset;
+    background-image: linear-gradient(-65deg, #C3271D var(--bg-primeira-cor), #FCE13C var(--bg-segunda-cor));
+    clip-path: inset(15px 15px 15px 15px round 20px);
+}
+
+h2 {
+    font-family: Roboto, 'Helvetica Neue', Arial;
+    animation: fadeInDown 300ms ease-out 200ms both;
+    -webkit-text-stroke: 0px;
+}
+
+h2.h2-hidden {
+    animation: fadeOutUp 350ms ease forwards;
+}
+
+.vs {
+    position: absolute;
+    scale: .3;
+    left: calc(50% - 500px);
+    filter: drop-shadow(0 0px 10px rgb(0, 0, 0));
+    transform: translateY(0);
+    opacity: 1;
+    will-change: transform, opacity;
+    animation: fadeInUp 300ms ease-out 200ms both;
+}
+
+/* When hidden, slide the element down and fade out */
+.vs.vs-hidden {
+    animation: fadeOutDown 350ms ease forwards;
+    pointer-events: none;
+}
+
+nav {
+    display: flex;
+    height: 40px;
+    width: 400px;
+    justify-content: center;
+    margin-left: calc(50% - 200px);
+    background: var(--cor-primaria);
+    transition: background 500ms ease;
+    font-family: 'DeadpoolOutline', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-text-stroke: #191c22 1px;
+    /* reduced by 80% (scale 0.8) */
+    clip-path: path("M 0,0 L 400,0 A 20,20 0,0,0 380,20 A 20,20 0,0,1 360,40 L 40,40 A 20,20 0,0,1 20,20 A 20,20 0,0,0 0,0 Z");
+    /* clip-path: path("M 10,50 L 90,50 A 10,10 0,0,0 100,40 L 100,10 L 110,0 L 190,0 L 200,10 L 200,190 L 190,200 L 10,200, L 0,190 L 0,60 L 10,50 Z"); */
+    position: relative;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+nav ul li {
+    cursor: pointer;
+    transition: text-shadow 300ms ease, transform 300ms ease;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px #ffffff;
+    transition: text-shadow 300ms ease, transform 300ms ease;
+}
+
+#escolha {
+    display: flex;
+    gap: 20rem;
+    justify-content: space-between;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    bottom: 10rem;
+}
+
+#escolha figure {
+    cursor: pointer;
+    transform: scale(1.11);
+    transition: filter 180ms ease, transform 180ms ease,
+        margin 300ms ease, opacity 700ms ease;
+    pointer-events: none;
+}
+
+/* Ensure figures and their images accept pointer events and show pointer cursor */
+#escolha figure,
+#escolha figure img {
+    cursor: pointer;
+}
+
+/* Habilitar interações após as animações terminarem (1000ms) */
+body.animations-complete #escolha figure,
+body.animations-complete #escolha figure img {
+    pointer-events: auto;
+}
+
+#escolha figure:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0px 10px rgb(255, 255, 255));
+    transition: filter 180ms ease, transform 180ms ease;
+}
+
+/* Desabilitar hover durante animações de entrada */
+body:not(.animations-complete) #escolha figure:hover {
+    transform: scale(1.11) !important;
+    filter: none !important;
+    cursor: default !important;
+}
+
+/* Ensure :hover visual effects are disabled while animating */
+body.animating #escolha figure:hover {
+    transform: scale(1.1) !important;
+    filter: none !important;
+    cursor: default !important;
+}
+
+/* Disable hover and clicks when selection is locked */
+body[data-selection-locked="1"] #escolha figure:hover {
+    transform: scale(1.1) !important;
+    filter: none !important;
+    cursor: default !important;
+}
+
+body[data-selection-locked="1"] #escolha figure,
+body[data-selection-locked="1"] #escolha figure * {
+    pointer-events: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    cursor: default !important;
+}
+
+#wolverine {
+    animation: fadeInRight 300ms ease-out 200ms both;
+    left: -2rem !important;
+    bottom: -2rem !important;
+    position: absolute;
+    width: 40vw;
+}
+
+#deadpool {
+    width: 35vw;
+    position: absolute;
+    right: -1rem !important;
+    bottom: -1rem !important;
+    animation: fadeInLeft 300ms ease-out 200ms both;
+    transform: scale(1.175) translateX(-.75rem) !important;
+    transition: transform 300ms ease, margin-left 300ms ease, opacity 700ms ease !important;
+}
+
+#escolha figure:has(#deadpool).slide-out-left #deadpool,
+#escolha figure:has(#deadpool).slide-out-left {
+    transition: transform 300ms ease, margin-left 300ms ease, opacity 700ms ease !important;
+
+    transform: scale(1.175) translateX(calc(-.75rem - 22vw)) !important;
+}
+
+/* While animation runs, disable pointer events on the choice figures and all their descendants
+   (child elements like images previously set to pointer-events:auto could still receive hovers).
+   Use !important to ensure hover styles cannot interrupt the slide animation. */
+body.animating #escolha figure,
+body.animating #escolha figure * {
+    pointer-events: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    cursor: default !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Animação de saída para escolha-tema */
+#escolha-tema.exiting {
+    animation: fadeOutDown 400ms ease-in both;
+    pointer-events: none;
+}
+
+/* Congela animações internas durante a saída para evitar reset */
+#escolha-tema.exiting *,
+#wolverine-tema.exiting *,
+#deadpool-tema.exiting * {
+    animation-play-state: paused !important;
+}
+
+/* Animações de saída para wolverine-tema e deadpool-tema */
+#wolverine-tema.exiting {
+    animation: fadeOutDown 400ms ease-in both;
+    pointer-events: none;
+}
+
+#deadpool-tema.exiting {
+    animation: fadeOutDown 400ms ease-in both;
+    pointer-events: none;
+}
+
+/* Override hidden for theme sections to allow exit animations */
+#wolverine-tema.hidden,
+#deadpool-tema.hidden {
+    display: flex !important;
+    pointer-events: none;
+}
+
+/* sobre-tema and trailer-tema don't need to stay visible when hidden */
+#sobre-tema.hidden,
+#trailer-tema.hidden {
+    display: none !important;
+}
+
+/* Actually hide after exit animation completes (500ms max duration) */
+#wolverine-tema.hidden.exit-complete,
+#deadpool-tema.hidden.exit-complete {
+    display: none !important;
+}
+
+/* Music info styling */
+.music-info {
+    width: 100% !important;
+    gap: 0 !important;
+    top: 70px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    font-family: Roboto, 'Helvetica Neue', Arial;
+    -webkit-text-stroke: 0;
+}
+
+.music-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+}
+
+.music-info p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Audio player styling */
+audio {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+/* Customize audio player appearance */
+audio::-webkit-media-controls-panel {
+    background-color: transparent;
+}
+
+audio::-webkit-media-controls-mute-button {
+    display: none;
+}
+
+audio::-webkit-media-controls-volume-slider {
+    display: none;
+}
+
+/* slide the non-selected figure off-screen */
+
+.slide-out-left {
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left 300ms ease, opacity 700ms ease !important;
+}
+
+.slide-out-right {
+    margin-left: 60%;
+    opacity: 0;
+    transition: margin-left 300ms ease, opacity 700ms ease !important;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        translate: 50px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0px;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        translate: -50px;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0px;
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+}
+
+@keyframes fadeOutLeft {
+    from {
+        opacity: 1;
+        translate: 0px;
+    }
+
+    to {
+        opacity: 0;
+        translate: -100px;
+    }
+}
+
+@keyframes fadeOutRight {
+    from {
+        opacity: 1;
+        translate: 0px;
+    }
+
+    to {
+        opacity: 0;
+        translate: 100px;
+    }
+}
+
+/*
+Source - https://stackoverflow.com/a
+Posted by Jeff Wooden, modified by community. See post 'Timeline' for change history
+Retrieved 2026-01-13, License - CC BY-SA 4.0
+*/
+
+.selector {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Prevent all images from being draggable */
+img {
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: auto;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+#sobre-tema,
+#trailer-tema {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    font-family: 'DeadpoolOutline', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-text-stroke: #191c22 1px;
+    position: absolute;
+    top: 3rem;
+    left: -1.5rem;
+    z-index: 1;
+}
+
+#trailer-tema {
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+    gap: 1.5rem;
+}
+
+.trailer-carousel {
+    top: 3rem;
+    width: min(1100px, 92vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.trailer-track {
+    position: relative;
+    width: 100%;
+    height: min(60vh, 520px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trailer-item {
+    position: absolute;
+    width: min(900px, 75vw);
+    aspect-ratio: 16 / 9;
+    transition: transform 400ms ease, opacity 400ms ease, filter 400ms ease;
+    opacity: 0.35;
+    filter: blur(1px) brightness(0.9);
+    pointer-events: none;
+}
+
+.trailer-item iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    background: #000;
+}
+
+.trailer-item.is-center {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    filter: none;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.trailer-item.is-left {
+    transform: translateX(-55%) scale(0.75);
+    opacity: 0.6;
+    z-index: 2;
+}
+
+.trailer-item.is-right {
+    transform: translateX(55%) scale(0.75);
+    opacity: 0.6;
+    z-index: 2;
+}
+
+.trailer-carousel .carousel-btn {
+    background-color: var(--cor-primaria);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 2.5rem;
+    line-height: 1;
+    font-family: monospace;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    transition: color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    user-select: none;
+}
+
+.trailer-carousel .carousel-btn:hover {
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.trailer-carousel .carousel-btn:active {
+    color: var(--cor-primaria);
+}
+
+@media (max-width: 900px) {
+    .trailer-track {
+        height: min(52vh, 420px);
+    }
+
+    .trailer-item {
+        width: min(760px, 85vw);
+    }
+
+    .trailer-item.is-left {
+        transform: translateX(-42%) scale(0.72);
+    }
+
+    .trailer-item.is-right {
+        transform: translateX(42%) scale(0.72);
+    }
+}
+
+@media (max-width: 600px) {
+    .trailer-carousel {
+        gap: 0.5rem;
+    }
+
+    .trailer-item.is-left,
+    .trailer-item.is-right {
+        opacity: 0.25;
+        transform: translateX(0) scale(0.65);
+    }
+
+    .trailer-carousel .carousel-btn {
+        font-size: 2.25rem;
+    }
+}
+
+#sobre-tema:not(.hidden) {
+    animation: fadeInUp 600ms ease-out forwards;
+}
+
+#sobre-tema.exiting {
+    animation: fadeOutDown 400ms ease-in forwards;
+}
+
+#trailer-tema:not(.hidden) {
+    animation: fadeInUp 600ms ease-out forwards;
+}
+
+#trailer-tema.exiting {
+    animation: fadeOutDown 400ms ease-in forwards;
+}
+
+/* Quando sobre ou trailer estão visíveis, ficam na frente */
+#sobre-tema:not(.hidden),
+#trailer-tema:not(.hidden) {
+    z-index: 10;
+}
+
+#wolverine-tema {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 500ms ease;
+    font-family: 'DeadpoolOutline', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-text-stroke: #191c22 1px;
+}
+
+#wolverine-tema .music-info {
+    animation: fadeInDown 400ms ease-out 100ms both;
+}
+
+#wolverine-tema audio {
+    animation: fadeInDown 400ms ease-out 200ms both;
+}
+
+#wolverine-tema h1 {
+    animation: fadeInRight 500ms ease-out 300ms both;
+}
+
+#wolverine-tema p {
+    animation: fadeInRight 500ms ease-out 400ms both;
+}
+
+#wolverine-tema ul li:nth-child(1) {
+    animation: fadeInUp 500ms ease-out 500ms both;
+}
+
+#wolverine-tema ul li:nth-child(2) {
+    animation: fadeInUp 500ms ease-out 600ms both;
+}
+
+#wolverine-tema ul li:nth-child(3) {
+    animation: fadeInUp 500ms ease-out 700ms both;
+}
+
+#wolverine-tema .wolverine-2 {
+    animation: fadeInLeft 600ms ease-out 400ms both;
+}
+
+/* Wolverine exit animations */
+#wolverine-tema.hidden .music-info {
+    animation: fadeOutDown 300ms ease-out 0ms both;
+}
+
+#wolverine-tema.hidden audio {
+    animation: fadeOutDown 300ms ease-out 50ms both;
+}
+
+#wolverine-tema.hidden h1 {
+    animation: fadeOutRight 400ms ease-out 100ms both;
+}
+
+#wolverine-tema.hidden p {
+    animation: fadeOutRight 400ms ease-out 150ms both;
+}
+
+#wolverine-tema.hidden ul li:nth-child(1) {
+    animation: fadeOutDown 400ms ease-out 200ms both;
+}
+
+#wolverine-tema.hidden ul li:nth-child(2) {
+    animation: fadeOutDown 400ms ease-out 250ms both;
+}
+
+#wolverine-tema.hidden ul li:nth-child(3) {
+    animation: fadeOutDown 400ms ease-out 300ms both;
+}
+
+#wolverine-tema.hidden .wolverine-2 {
+    animation: fadeOutLeft 500ms ease-out 100ms both;
+}
+
+#wolverine-tema div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: start;
+    gap: 1rem;
+}
+
+.wolverine-tema-div1 {
+    margin-left: 5rem;
+}
+
+#wolverine-tema div ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#wolverine-tema div ul li {
+    width: 200px;
+    height: 100px;
+    background-color: var(--cor-secundaria);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    filter: drop-shadow(2.5px 5px 10px rgba(0, 0, 0))
+}
+
+.wolverine-2 {
+    filter: drop-shadow(-2.5px 5px 10px rgba(0, 0, 0));
+}
+
+#deadpool-tema {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 1;
+    transition: opacity 500ms ease;
+    font-family: 'DeadpoolOutline', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-text-stroke: #191c22 1px;
+}
+
+#deadpool-tema .deadpool-2 {
+    animation: fadeInRight 600ms ease-out 400ms both;
+}
+
+#deadpool-tema .music-info {
+    animation: fadeInDown 400ms ease-out 100ms both;
+}
+
+#deadpool-tema audio {
+    animation: fadeInDown 400ms ease-out 200ms both;
+}
+
+#deadpool-tema h1 {
+    animation: fadeInLeft 500ms ease-out 300ms both;
+}
+
+#deadpool-tema p {
+    animation: fadeInLeft 500ms ease-out 400ms both;
+}
+
+#deadpool-tema ul li:nth-child(1) {
+    animation: fadeInUp 500ms ease-out 500ms both;
+}
+
+#deadpool-tema ul li:nth-child(2) {
+    animation: fadeInUp 500ms ease-out 600ms both;
+}
+
+#deadpool-tema ul li:nth-child(3) {
+    animation: fadeInUp 500ms ease-out 700ms both;
+}
+
+/* Deadpool exit animations */
+#deadpool-tema.hidden .deadpool-2 {
+    animation: fadeOutRight 500ms ease-out 100ms both;
+}
+
+#deadpool-tema.hidden .music-info {
+    animation: fadeOutDown 300ms ease-out 0ms both;
+}
+
+#deadpool-tema.hidden audio {
+    animation: fadeOutDown 300ms ease-out 50ms both;
+}
+
+#deadpool-tema.hidden h1 {
+    animation: fadeOutLeft 400ms ease-out 100ms both;
+}
+
+#deadpool-tema.hidden p {
+    animation: fadeOutLeft 400ms ease-out 150ms both;
+}
+
+#deadpool-tema.hidden ul li:nth-child(1) {
+    animation: fadeOutDown 400ms ease-out 200ms both;
+}
+
+#deadpool-tema.hidden ul li:nth-child(2) {
+    animation: fadeOutDown 400ms ease-out 250ms both;
+}
+
+#deadpool-tema.hidden ul li:nth-child(3) {
+    animation: fadeOutDown 400ms ease-out 300ms both;
+}
+
+#deadpool-tema div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: start;
+    gap: 1rem;
+}
+
+#deadpool-tema div:nth-child(2) {
+    margin-right: 5rem;
+}
+
+#deadpool-tema div ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#deadpool-tema div ul li {
+    width: 200px;
+    height: 100px;
+    background-color: var(--cor-secundaria);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    filter: drop-shadow(-2.5px 5px 10px rgba(0, 0, 0))
+}
+
+.deadpool-2 {
+    text-align: end;
+    filter: drop-shadow(2.5px 5px 10px rgba(0, 0, 0));
+}
+
+.footer {
+    font-size: 1.25rem;
+    background-color: var(--cor-primaria);
+    color: #fff;
+    width: 320px;
+    height: 60px;
+    position: absolute;
+    clip-path: path("M 40,20 L 300,20 A 20,20 0,0,0 320,0 L 320,60 L 0,60 A 20,20 0,0,0 20,40 A 20,20 0,0,1 40,20 Z");
+    z-index: 100;
+    rotate: -90deg;
+    right: -8.2rem;
+    top: 8.1rem;
+    align-content: center;
+    transition: background 500ms ease;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-icons {
+    align-items: center;
+    transform: translate(20%, 45%);
+    display: flex;
+    gap: .5rem;
+}
+
+.footer-icons img {
+    rotate: 90deg;
+    border: 2px #fff solid;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0));
+    transition: filter 300ms ease;
+}
+
+.footer-icons img:hover {
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255));
+    cursor: pointer;
+    transition: filter 300ms ease;
+}
+
+.footer span {
+    font-family: Roboto, 'Helvetica Neue', Arial;
+    transform: translate(0%, 50%);
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0));
+}
+
+/* ////////////////////// */
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+.slider {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    top: 10%;
+    left: calc(50% - 200px);
+    transform-style: preserve-3d;
+    transform: perspective(3000px) rotateZ(5deg) rotateX(-5deg);
+    transition: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.projetosItem {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.795)) !important;
+    background-color: var(--cor-primaria) !important;
+    display: flex;
+    width: 400px;
+    height: 200px;
+    text-align: justify;
+    transition: 0.5s;
+    left: calc(50% - 25rem);
+    top: 0;
+    border-radius: 1rem;
+    color: hsl(0, 0%, 100%);
+    overflow: hidden;
+
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360/13) * 1deg)) translateZ(850px);
+    transform-style: preserve-3d;
+    perspective: 100px;
+    z-index: 1;
+    backface-visibility: hidden;
+}
+
+.projetosItem:hover {
+    cursor: pointer;
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 150%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
+    font-size: .7rem;
+}
+
+.profile-text span {
+    font-size: .55rem;
+    -webkit-text-stroke: #000 .5px;
+}
+
+.profile-text h2 {
+    font-family: 'DeadpoolOutline', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-text-stroke: #191c22 1px;
+    font-size: 1.25rem;
+}
+
+.buttons {
+    position: relative;
+    top: 25rem;
+    left: calc(50% - 2rem);
+    display: flex;
+    gap: 1rem;
+}
+
+#next,
+#prev {
+    color: hsla(0, 0%, 100%, 0.5);
+    background-color: transparent;
+    border: none;
+    font-size: xxx-large;
+    font-family: monospace;
+    font-weight: bold;
+    z-index: 1;
+    transition: color .25s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#next:hover,
+#prev:hover {
+    transition: color .5s;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+#next:active,
+#prev:active {
+    transition: color .1s;
+    color: var(--cor-primaria);
+}
+
+.emma {
+    background: url("./imagens/emma.webp") center no-repeat;
+    background-size: cover;
+}
+
+.matthew {
+    background: url("./imagens/matthew.webp") center no-repeat;
+    background-size: cover;
+}
+
+.dafne {
+    background: url("./imagens/dafne.webp") center no-repeat;
+    background-size: cover;
+}
+
+.ryan {
+    background: url("./imagens/ryan.webp") center no-repeat;
+    background-size: cover;
+}
+
+.hugh {
+    background: url("./imagens/hugh.webp") center no-repeat;
+    background-size: cover;
+    background-position: -85px 0px;
+}
+
+.leslie {
+    background: url("./imagens/leslie.webp") center no-repeat;
+    background-size: cover;
+}
+
+.channing {
+    background: url("./imagens/channing.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.profile {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.profile:hover::before {
+    opacity: 0;
+}
+
+/* Imagens de overlay usando ::before */
+.emma::before {
+    background: url("./imagens/cassandra.avif") center no-repeat;
+    background-size: cover;
+}
+
+.matthew::before {
+    background: url("./imagens/paradox.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.dafne::before {
+    background: url("./imagens/x23.webp") center no-repeat;
+    background-size: cover;
+}
+
+.ryan::before {
+    background: url("./imagens/pf-deadpool.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.hugh::before {
+    background: url("./imagens/pf-wolverine.avif") center no-repeat;
+    background-size: cover;
+}
+
+.leslie::before {
+    background: url("./imagens/alCega.jpg") center no-repeat;
+    background-size: cover;
+    background-position: -120px 0;
+}
+
+.channing {
+    background: url("./imagens/channing.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.channing::before {
+    background: url("./imagens/gambit.webp") center no-repeat;
+    background-size: cover;
+}
+
+.blade {
+    background: url("./imagens/Wesley.webp") center no-repeat;
+    background-size: cover;
+}
+
+.blade::before {
+    background: url("./imagens/blade.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.elektra {
+    background: url("./imagens/jennifer.webp") center no-repeat;
+    background-size: cover;
+}
+
+.elektra::before {
+    background: url("./imagens/elektra.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.johnny {
+    background: url("./imagens/Chris.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.johnny::before {
+    background: url("./imagens/johnny.jpg") center no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+}
+
+.vanessa {
+    background: url("./imagens/morena.webp") center no-repeat;
+    background-size: cover;
+}
+
+.vanessa::before {
+    background: url("./imagens/vanessa.avif") center no-repeat;
+    background-size: cover;
+}
+
+.pyro {
+    background: url("./imagens/aaron.webp") center no-repeat;
+    background-size: cover;
+}
+
+.pyro::before {
+    background: url("./imagens/pyro.webp") center no-repeat;
+    background-size: cover;
+}
+
+.sabretooth {
+    background: url("./imagens/tyler.webp") center no-repeat;
+    background-size: cover;
+    background-position: 0 0px;
+}
+
+.sabretooth::before {
+    background: url("./imagens/sabres.webp") center no-repeat;
+    background-size: cover;
+}
+
+.actor-name {
+    display: block;
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+}
+
+.dogpool-image {
+    position: fixed;
+    bottom: -15rem;
+    left: -15rem;
+    width: 35rem;
+    pointer-events: none;
+    z-index: 50;
+    transform: scaleX(-1);
+    filter: drop-shadow(-5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+/* ===================== Responsive ===================== */
